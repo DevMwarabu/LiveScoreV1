@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/background"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/tv.title"
+            android:textColor="@android:color/darker_gray"
+            android:textAppearance="?textAppearanceCaption"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/tv.home.team.val"
+                android:textColor="@android:color/darker_gray"
+                android:textAppearance="?textAppearanceCaption"
+                android:text="2"/>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:progress="78"
+                app:trackColor="?attr/cardBackgroundColor"
+                app:trackThickness="6dp"
+                android:layout_gravity="center"
+                app:indicatorColor="@color/shimmer_color"
+                app:indicatorDirectionLinear="endToStart"
+                app:trackCornerRadius="8dp"
+                android:id="@+id/progressBar.home"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressBar.away"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:progress="78"
+                app:trackColor="?attr/cardBackgroundColor"
+                app:trackThickness="6dp"
+                app:indicatorColor="@color/shimmer_color"
+                android:layout_weight="1"
+                app:trackCornerRadius="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/tv.away.team.val"
+                android:textColor="@android:color/darker_gray"
+                android:textAppearance="?textAppearanceCaption"
+                android:text="2"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/shimmer_color"/>
+
+</LinearLayout>

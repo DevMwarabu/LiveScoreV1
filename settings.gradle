@@ -1,0 +1,31 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven {
+            url 'https://esri.jfrog.io/artifactory/arcgis'
+        }
+        maven { url 'https://maven.testfairy.com' }
+        maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // maven { url  "https://dl.bintray.com/lukaville/maven" }
+        maven {
+            url 'https://esri.jfrog.io/artifactory/arcgis'
+        }
+        maven { url 'https://maven.testfairy.com' }
+        maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
+    }
+}
+rootProject.name = "LiveScoreV1"
+include ':app'

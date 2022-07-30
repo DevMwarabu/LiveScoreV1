@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Activites.MoreLives">
+
+    <LinearLayout
+        android:id="@+id/linear.maain.secon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lotty.main"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:scaleType="centerCrop"
+            android:transitionName="image"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_main"
+            app:lottie_renderMode="automatic" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:text="Loading..."
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textAppearance="?textAppearanceCaption"
+            android:textColor="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear.maain"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card.back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:cardBackgroundColor="?attr/background"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/materialTextView2"
+                app:rippleColor="@android:color/darker_gray">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:tint="@color/primaryColor" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginLeft="12dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L📺ve Matches"
+                    android:textAppearance="?textAppearanceHeadline6" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv.league.name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card.status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:cardBackgroundColor="@android:color/holo_red_dark"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="8dp"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="4dp"
+                        app:cardElevation="0dp"
+                        app:cardUseCompatPadding="false" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="8dp"
+                        android:text="LIVE"
+                        android:textColor="@android:color/white"
+                        android:textSize="8dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            app:closeIcon="@drawable/ic_baseline_close_24"
+            app:defaultQueryHint="Search by country"
+            app:iconifiedByDefault="false"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="?attr/cardBackgroundColor"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Search by name ..."
+            app:searchHintIcon="@drawable/ic_baseline_search_24"
+            app:showDividers="beginning" />
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe.main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nested.main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv.live.matches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="12dp"
+                        android:nestedScrollingEnabled="false" />
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <com.google.android.gms.ads.AdView
+            android:layout_marginTop="12dp"
+            android:id="@+id/adview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:adSize="BANNER"
+            app:adUnitId="@string/banner" />
+    </LinearLayout>
+
+</LinearLayout>

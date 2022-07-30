@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#047E4C</color>
+    <color name="primaryLightColor">#16AF70</color>
+    <color name="primaryLightMoreColor">#9CFBD5</color>
+    <color name="primaryDarkColor">#007445</color>
+    <color name="secondaryColor">#2F2E41</color>
+    <color name="secondaryLightColor">#1C1C1C</color>
+    <color name="secondaryDarkColor">#0E0E0E</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#ffffff</color>
+    <color name="shimmerColor">#DFDEDE</color>
+
+    <!--    Cutom colors-->
+    <color name="googleColor">#4285F4</color>
+    <color name="backGroundLightModeColor">#F8F8F8</color>
+    <color name="backGroundDarkModeColor">#131313</color>
+    <color name="buttonTintLightModeColor">#E6E6E6</color>
+    <color name="circleColor">#0346CD</color>
+    <color name="bluePremeir">#03043E</color>
+    <color name="buttonTintDarkModeColor">#1C1C1C</color>
+    <color name="cardBackgroundDarkModeColor">#1C1C1C</color>
+    <color name="cardBackgroundLightModeColor">#FDFDFD</color>
+    <color name="subtitleTextColor">#6E6E6E</color>
+    <color name="openStatusColor">#009649</color>
+    <color name="openStatusLightColor">#CBFDE3</color>
+    <color name="colorError">#F44336</color>
+    <color name="colorHelper">#8B8B8B</color>
+    <color name="colorTwitter">#48B3DC</color>
+    <color name="facebookColor">#3b5998</color>
+
+    <array name="array_dot_inactive">
+        <item>@color/primaryLightColor</item>
+        <item>@color/primaryLightColor</item>
+        <item>@color/primaryLightColor</item>
+    </array>
+
+    <array name="array_dot_active">
+        <item>@color/primaryColor</item>
+        <item>@color/primaryColor</item>
+        <item>@color/primaryColor</item>
+    </array>
+</resources>

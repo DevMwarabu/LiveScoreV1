@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/background">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="240dp"
+            android:scaleType="fitCenter"
+            android:id="@+id/image.main"
+            app:tint="@null"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_undraw_charts_re_5qe9"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Swift &amp; Reliable"
+            android:textStyle="bold"
+            android:textAppearance="?textAppearanceHeadline4"
+            android:layout_marginTop="32dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Very fast and reliable liveScore app."
+            android:textAppearance="?textAppearanceBody1"
+            android:textColor="@color/subtitleTextColor" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

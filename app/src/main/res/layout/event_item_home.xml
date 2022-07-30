@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="4dp"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/openStatusLightColor"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image.profile"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:src="@android:color/darker_gray"
+                app:civ_border_color="@color/primaryColor"
+                app:civ_border_width="0.5dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv.player.name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jane Doe"
+                    android:textColor="@android:color/black"
+                    android:textAppearance="?textAppearanceCaption" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv.detail"
+                    android:layout_width="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:layout_height="wrap_content"
+                    android:text="Red card"
+                    android:textAppearance="?textAppearanceBody2" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/image.event.details"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:tint="@null"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/googleColor"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
+        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toTopOf="@+id/materialCardView">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv.elapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:textAppearance="?textAppearanceCaption"
+            android:textColor="@android:color/white" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

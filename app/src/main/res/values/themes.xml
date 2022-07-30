@@ -1,0 +1,203 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="fontFamily">@font/main_font</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">
+            @color/backGroundLightModeColor
+        </item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/backGroundLightModeColor
+        </item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:windowEnterTransition" tools:ignore="NewApi">
+            @android:transition/explode
+        </item>
+        <item name="android:windowExitTransition" tools:ignore="NewApi">
+            @android:transition/explode
+        </item>
+        <item name="android:windowActivityTransitions" tools:ignore="NewApi">true</item>
+        <!-- Color customization. -->
+        <item name="background">@color/backGroundLightModeColor</item>
+        <item name="cardBackgroundColor">@color/cardBackgroundLightModeColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textColorHighlight">@color/subtitleTextColor</item>
+        <item name="tint">@color/cardBackgroundDarkModeColor</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="boxBackgroundColor">@color/buttonTintLightModeColor</item>
+        <item name="boxStrokeColor">@color/subtitleTextColor</item>
+        <item name="buttonTint">@color/buttonTintLightModeColor</item>
+        <item name="titleTextColor">@color/buttonTintLightModeColor</item>
+        <item name="backgroundColor">@color/cardBackgroundDarkModeColor</item>
+    </style>
+
+    <style name="ThemIntro" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="fontFamily">@font/main_font</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">
+            @color/backGroundLightModeColor
+        </item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/backGroundLightModeColor
+        </item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowEnterTransition" tools:ignore="NewApi">
+            @android:transition/explode
+        </item>
+        <item name="android:windowExitTransition" tools:ignore="NewApi">
+            @android:transition/explode
+        </item>
+        <item name="android:windowActivityTransitions" tools:ignore="NewApi">true</item>
+
+    </style>
+    <!-- Base application theme. -->
+    <style name="ThemeLeeagueIfo" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="fontFamily">@font/main_font</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">
+            @color/backGroundLightModeColor
+        </item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/cardBackgroundLightModeColor
+        </item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:windowEnterTransition" tools:ignore="NewApi">
+            @android:transition/explode
+        </item>
+        <item name="android:windowExitTransition" tools:ignore="NewApi">
+            @android:transition/explode
+        </item>
+        <item name="android:windowActivityTransitions" tools:ignore="NewApi">true</item>
+        <!-- Color customization. -->
+        <item name="background">@color/backGroundLightModeColor</item>
+        <item name="cardBackgroundColor">@color/cardBackgroundLightModeColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textColorHighlight">@color/subtitleTextColor</item>
+        <item name="tint">@color/cardBackgroundDarkModeColor</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="boxBackgroundColor">@color/buttonTintLightModeColor</item>
+        <item name="boxStrokeColor">@color/subtitleTextColor</item>
+        <item name="buttonTint">@color/buttonTintLightModeColor</item>
+        <item name="titleTextColor">@color/buttonTintLightModeColor</item>
+        <item name="backgroundColor">@color/cardBackgroundDarkModeColor</item>
+    </style>
+
+    <style name="secondaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primaryColor</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">12dp</item>
+        <item name="cornerRadius">32dp</item>
+    </style>
+
+    <style name="secondaryButtonTextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="cornerRadius">32dp</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="radioButton">
+        <item name="buttonTint">@color/primaryColor</item>
+    </style>
+
+    <style name="cardBackCallChat">
+        <item name="cardBackgroundColor">#D5FDFF</item>
+        <item name="tint">@color/primaryDarkColor</item>
+    </style>
+
+    <style name="settingStrips">
+        <item name="android:background">#F0F0F0</item>
+        <item name="android:textColor">#9A9A9A</item>
+    </style>
+
+    <style name="shimmerColorStyle">
+        <item name="cardBackgroundColor">#EAEAEA</item>
+        <item name="android:background">#EAEAEA</item>
+    </style>
+
+    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/background_color_chip_state_list_dar</item>
+        <item name="android:textColor">@color/text_color_chip_state_list_light</item>
+        <item name="chipStrokeColor">@android:color/darker_gray</item>
+        <item name="chipStrokeWidth">0.7dp</item>
+    </style>
+
+    <style name="TitleFont">
+        <item name="fontFamily">@font/semi_bold</item>
+    </style>
+
+    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="colorAccent">@android:color/black</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="AdAttribution2">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:background">@drawable/ad_call_to_action_small</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:text">AD</item>
+        <item name="android:height">20dp</item>
+        <item name="android:width">28dp</item>
+    </style>
+
+    <style name="ButtonStyle" parent="TextAppearance.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primaryColor</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tabText">
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/semi_bold</item>
+    </style>
+</resources>

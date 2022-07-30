@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".Fragments.LeagueFrags.Matches">
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip.group.main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:chipSpacing="8dp"
+        app:selectionRequired="true"
+        app:singleLine="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip.fixture"
+            style="@style/CustomChipChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="true"
+            android:text="@string/fixtures"
+            android:textAppearance="?textAppearanceCaption" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip.results"
+            style="@style/CustomChipChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="RESULTS"
+            android:textAppearance="?textAppearanceCaption" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe.main">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="true"
+                android:id="@+id/rv.fixtures"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:nestedScrollingEnabled="true"
+                android:id="@+id/rv.results"/>
+
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

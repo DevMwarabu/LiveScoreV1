@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    android:padding="12dp"
+    tools:context=".Fragments.MainFrags.FragDashboard">
+
+    <LinearLayout
+        android:id="@+id/linear.maain.secon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lotty.main"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:scaleType="centerCrop"
+            android:transitionName="image"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_main"
+            app:lottie_renderMode="automatic" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:text="Loading..."
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textAppearance="?textAppearanceCaption"
+            android:textColor="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear.maain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe.main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nested.main"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv.leagues"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:nestedScrollingEnabled="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card.search"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            app:rippleColor="@android:color/darker_gray">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="12dp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_baseline_search_24"
+                                    app:tint="@android:color/darker_gray" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_weight="1"
+                                    android:text="Find more live games"
+                                    android:textAppearance="?textAppearanceHeadline6"
+                                    android:textColor="@android:color/darker_gray" />
+
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card.filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:clickable="true"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/materialTextView2"
+                            app:rippleColor="@android:color/darker_gray">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_margin="12dp"
+                                android:src="@drawable/ic_baseline_filter_alt_24"
+                                app:tint="@android:color/darker_gray" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/native_Admob_ads_rr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp">
+
+                        <FrameLayout
+                            android:id="@+id/fl_adplaceholder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Matches"
+                            android:textAppearance="?textAppearanceHeadline6"
+                            app:fontFamily="@font/semi_bold" />
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card.all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:visibility="gone"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/materialTextView2"
+                            app:rippleColor="@android:color/darker_gray">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="8dp"
+                                android:text="More"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:textColor="@color/primaryColor" />
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card.live"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            app:cardBackgroundColor="?attr/background"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/materialTextView2"
+                            app:rippleColor="@android:color/darker_gray">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="8dp"
+                                android:text="More"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:textColor="@color/primaryColor" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="top 3 recent matches"
+                        android:textAppearance="?textAppearanceBody2" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv.last.matches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:nestedScrollingEnabled="true" />
+
+                    <com.google.android.gms.ads.AdView
+                        android:id="@+id/adview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        app:adSize="BANNER"
+                        app:adUnitId="@string/banner" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="upcoming matches"
+                        android:textAppearance="?textAppearanceBody2" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv.next.matches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:nestedScrollingEnabled="true" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="?attr/cardBackgroundColor"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="4dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="16dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceHeadline6"
+            android:text="Theme"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceBody1"
+            android:text="Change the look and feel of your app."
+            android:textColor="@android:color/darker_gray"/>
+        <RadioGroup
+            android:id="@+id/radiogroup.main"
+            android:layout_width="match_parent"
+            android:paddingTop="12dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radio.light"
+                android:text="Light Theme"
+                android:textColor="?attr/colorAccent"
+                android:checked="true"
+                android:buttonTint="@android:color/darker_gray"/>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radio.dark"
+                android:text="Dark Theme"
+                android:textColor="?attr/colorAccent"
+                android:buttonTint="@android:color/darker_gray"/>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radio.systsem"
+                android:textColor="?attr/colorAccent"
+                android:text="Use system default"
+                android:buttonTint="@android:color/darker_gray"/>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorAccent"
+                android:id="@+id/radio.battery"
+                android:text="Set by Battery Saver"
+                android:buttonTint="@android:color/darker_gray"/>
+        </RadioGroup>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

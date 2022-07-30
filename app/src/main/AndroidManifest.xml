@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.laxco.livescorev1">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".Utils.MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".Activites.TeamInfo"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false" />
+        <activity
+            android:name=".Activites.AllLeagues"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false" />
+        <activity
+            android:name=".Activites.LeagueInfo"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false"
+            android:theme="@style/ThemeLeeagueIfo" />
+        <activity
+            android:name=".Activites.Countries"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false" />
+        <activity
+            android:name=".Activites.TeamStats"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false" />
+        <activity
+            android:name=".Activites.MyPolicy"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="true" />
+        <activity
+            android:name=".Introduction.WelcomeActivity"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="true" />
+        <activity
+            android:name=".Activites.MoreLives"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false" />
+        <activity
+            android:name=".Activites.FixtureInfo"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false" />
+        <activity
+            android:name=".Dashboard"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|layoutDirection|locale|screenLayout|smallestScreenSize"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/appid" />
+    </application>
+
+</manifest>

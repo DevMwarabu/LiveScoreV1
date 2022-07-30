@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="?attr/cardBackgroundColor"
+    app:cardCornerRadius="32dp"
+    app:cardUseCompatPadding="true"
+    android:clickable="true"
+    app:rippleColor="@android:color/darker_gray"
+    android:id="@+id/card.main"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="6dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:id="@+id/image.league.logo"
+            app:civ_border_color="@color/primaryColor"
+            app:civ_border_width="1dp"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="fill_parent"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:ellipsize="marquee"
+                android:id="@+id/tv.league.name"
+                android:textAppearance="?textAppearanceBody1"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv.league.country"
+                android:textColor="@android:color/darker_gray"
+                android:textAppearance="?textAppearanceCaption"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

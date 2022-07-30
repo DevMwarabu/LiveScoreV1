@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    android:orientation="vertical"
+    tools:context=".Activites.LeagueInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/cardBackgroundColor"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card.back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="?attr/cardBackgroundColor"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/materialTextView2"
+                app:rippleColor="@android:color/darker_gray">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:id="@+id/image.league.logo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@android:color/darker_gray"
+                app:tint="@null" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv.league.name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Premier league"
+                    android:textAppearance="?textAppearanceBody1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv.league.type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="League"
+                        android:textAppearance="?textAppearanceCaption"
+                        android:textColor="@android:color/darker_gray" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv.league.country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=".England"
+                        android:textAppearance="?textAppearanceCaption"
+                        android:textColor="@android:color/darker_gray" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tabGravity="start"
+            app:tabMode="scrollable"
+            app:tabIconTint="@color/icon_selector"
+            app:tabIndicatorAnimationDuration="1"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabIndicatorColor="@color/icon_selector"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="0dp"
+            app:tabPaddingBottom="8dp"
+            app:tabSelectedTextColor="@color/icon_selector"
+            app:tabTextAppearance="?textAppearanceBody1" />
+
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="false"
+    app:cardCornerRadius="8dp"
+    android:id="@+id/card.main"
+    app:cardElevation="0dp"
+    android:layout_margin="4dp"
+    android:layout_marginTop="4dp"
+    android:clickable="true"
+    app:cardBackgroundColor="?attr/cardBackgroundColor"
+    app:rippleColor="@android:color/darker_gray"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/image.flag"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            app:tint="@null"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv.name"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:ellipsize="marquee"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:textAppearance="?textAppearanceBody2"/>
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/drawable-v24/ad_call_to_action_small.xml" value="0.198" />
+        <entry key="app/src/main/res/drawable/circle_item.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/circle_item_lose.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/gradient_back.xml" value="0.198" />
+        <entry key="app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.198" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.198" />
+        <entry key="app/src/main/res/drawable/ic_baseline_terrain_24.xml" value="0.1735" />
+        <entry key="app/src/main/res/drawable/ic_pie_chart_fill0_wght400_grad0_opsz48.xml" value="0.198" />
+        <entry key="app/src/main/res/drawable/shape_game_status.xml" value="0.198" />
+        <entry key="app/src/main/res/layout/activity_all_leagues.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/activity_countries.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_fixture_info.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_league_info.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_more_lives.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/activity_my_policy2.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/activity_team_info.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/ad_unified.xml" value="0.32222222222222224" />
+        <entry key="app/src/main/res/layout/country_item.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/dialog_opening_team_fixture.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/dialog_themes.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/event_item_away.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/event_item_home.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fixture_item.xml" value="0.3583934088568486" />
+        <entry key="app/src/main/res/layout/fixture_more_item.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_child.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_frag_cal.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_frag_dashboard.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_frag_today.xml" value="0.32222222222222224" />
+        <entry key="app/src/main/res/layout/fragment_laundry_parent.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_live_info.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_matches.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_next_date.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_player_stats.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_prev_date.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_squard.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_tables.xml" value="0.32222222222222224" />
+        <entry key="app/src/main/res/layout/games_item.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/leagues_item.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/lineupitem.xml" value="0.248046875" />
+        <entry key="app/src/main/res/layout/match_item.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/player_stats_item.xml" value="0.271483539974348" />
+        <entry key="app/src/main/res/layout/standings_items.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/standings_items_landscape.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/states_item.xml" value="0.4086181277860327" />
+        <entry key="app/src/main/res/layout/tab_icon.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/table_land_scape.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/welcome_slide1.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/welcome_slide2.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/welcome_slide3.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1735" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".Fragments.LeagueFrags.PlayerStats">
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip.group.main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:chipSpacing="4dp"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip.all"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:checked="true"
+                    android:text="ALL"
+                    android:textAppearance="?textAppearanceCaption" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip.goals"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="GOALS"
+                    android:textAppearance="?textAppearanceCaption" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip.assists"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="PASSES"
+                    android:textAppearance="?textAppearanceCaption" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip.red.cards"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="RED CARDS"
+                    android:textAppearance="?textAppearanceCaption" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip.yellow.cards"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="YELLOW CARDS"
+                    android:textAppearance="?textAppearanceCaption" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip.shorts.on.target"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="SHOTS ON TARGET"
+                    android:textAppearance="?textAppearanceCaption" />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ALL"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/darker_gray" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv.all"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:nestedScrollingEnabled="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GOALS"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/darker_gray" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv.goals"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:nestedScrollingEnabled="true" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            android:id="@+id/card.view.all.goals"
+                            app:rippleColor="@android:color/darker_gray"
+                            app:cardCornerRadius="0dp"
+                            android:clickable="true"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            android:focusable="true">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:text="View All"
+                                android:textColor="@android:color/darker_gray"
+                                android:layout_margin="8dp"
+                                android:layout_gravity="center"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear.3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PASSES"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/darker_gray" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv.assists"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:nestedScrollingEnabled="true" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            android:id="@+id/card.view.all.assists"
+                            app:rippleColor="@android:color/darker_gray"
+                            app:cardCornerRadius="0dp"
+                            android:clickable="true"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            android:focusable="true">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:text="View All"
+                                android:textColor="@android:color/darker_gray"
+                                android:layout_margin="8dp"
+                                android:layout_gravity="center"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear.4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RED CARDS"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/darker_gray" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv.red.cards"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:nestedScrollingEnabled="true" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            android:id="@+id/card.view.all.red"
+                            app:rippleColor="@android:color/darker_gray"
+                            app:cardCornerRadius="0dp"
+                            android:clickable="true"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            android:focusable="true">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:text="View All"
+                                android:layout_margin="8dp"
+                                android:textColor="@android:color/darker_gray"
+                                android:layout_gravity="center"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YELLOW CARDS"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/darker_gray" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv.yellow.cards"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:nestedScrollingEnabled="true" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            android:id="@+id/card.view.all.yellow"
+                            app:rippleColor="@android:color/darker_gray"
+                            app:cardCornerRadius="0dp"
+                            android:clickable="true"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            android:focusable="true">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:text="View All"
+                                android:textColor="@android:color/darker_gray"
+                                android:layout_margin="8dp"
+                                android:layout_gravity="center"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear.6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHORTS ON TARGET"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/darker_gray" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv.shorts"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:nestedScrollingEnabled="true" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="?attr/cardBackgroundColor"
+                            android:id="@+id/card.view.all.shorts"
+                            app:rippleColor="@android:color/darker_gray"
+                            app:cardCornerRadius="0dp"
+                            android:clickable="true"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="false"
+                            android:focusable="true">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:text="View All"
+                                android:textColor="@android:color/darker_gray"
+                                android:layout_margin="8dp"
+                                android:layout_gravity="center"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

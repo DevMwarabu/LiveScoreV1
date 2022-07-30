@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.gluak.f24.livescorev1.livescore.eu.livesport.soccer.FlashScore_com.kokteyl.goal.football",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 1,
+      "versionName": "1.0",
+      "outputFile": "LiveScore-v1.0.BETA.apk"
+    }
+  ],
+  "elementType": "File"
+}
