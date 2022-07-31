@@ -17,9 +17,6 @@
     <string name="native_Ad">ca-app-pub-7324587966279245/9520921088</string>
     <string name="reward_ad">ca-app-pub-7324587966279245/3500740974</string>
 
-    <!--    FaceBook AdUNit-->
-    <string name="interstitialFacebookAdUnit">699675987367839_699678100034292</string>
-
     <!--    OneSignal-->
     <string name="one_signal_app_id">fbc1f2d6-5df2-4f32-b406-fbb73920fb74</string>
 
