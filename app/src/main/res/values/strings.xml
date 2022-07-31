@@ -2,24 +2,27 @@
     <string name="app_name">LiveSc⚽re</string>
 
     <!--    Test Ads-->
-    <string name="appid">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="banner">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstitial">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="app_opener">ca-app-pub-3940256099942544/3419835294</string>
-    <string name="native_Ad">ca-app-pub-3940256099942544/2247696110</string>
+<!--    <string name="appid">ca-app-pub-3940256099942544~3347511713</string>-->
+<!--    <string name="banner">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="interstitial">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--    <string name="app_opener">ca-app-pub-3940256099942544/3419835294</string>-->
+<!--    <string name="native_Ad">ca-app-pub-3940256099942544/2247696110</string>-->
+<!--    <string name="reward_ad">ca-app-pub-3940256099942544/5224354917</string>-->
 
 
-    <!--        <string name="appid">ca-app-pub-7324587966279245~8782554482</string>-->
-    <!--        <string name="banner"> ca-app-pub-7324587966279245/5964819455</string>-->
-    <!--        <string name="interstitial">ca-app-pub-7324587966279245/5773247769</string>-->
-    <!--        <string name="app_opener">ca-app-pub-7324587966279245/8801901630</string>-->
-    <!--        <string name="native_Ad">ca-app-pub-7324587966279245/9520921088</string>-->
+    <string name="appid">ca-app-pub-7324587966279245~8782554482</string>
+    <string name="banner"> ca-app-pub-7324587966279245/5964819455</string>
+    <string name="interstitial">ca-app-pub-7324587966279245/5773247769</string>
+    <string name="app_opener">ca-app-pub-7324587966279245/8801901630</string>
+    <string name="native_Ad">ca-app-pub-7324587966279245/9520921088</string>
+    <string name="reward_ad">ca-app-pub-7324587966279245/3500740974</string>
 
     <!--    FaceBook AdUNit-->
     <string name="interstitialFacebookAdUnit">699675987367839_699678100034292</string>
 
     <!--    OneSignal-->
-    <string name="one_signal_app_id">bf68e6fd-e663-49c2-8c80-a8678377d4a4</string>
+    <string name="one_signal_app_id">fbc1f2d6-5df2-4f32-b406-fbb73920fb74</string>
+
     <string name="by_clicking_get_started_you_agreewith_our_terms_and_contions">By Clicking Get Started you agree with our <font color='#0346CD'>Terms and Conditions</font></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

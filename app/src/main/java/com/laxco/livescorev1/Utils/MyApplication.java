@@ -6,6 +6,8 @@ import com.facebook.stetho.Stetho;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.laxco.livescorev1.R;
+import com.onesignal.OneSignal;
 
 /**
  * This project file is owned by DevMwarabu, johnmwarabuchone@gmail.com.
@@ -17,17 +19,11 @@ public class MyApplication extends Application {
     private static Head_Of_App appOpenManager;
     public void onCreate() {
         super.onCreate();
-        //initializing facebook audience ads
-       // AudienceNetworkInitializeHelper.initialize(this);
         // Enable verbose OneSignal logging to debug issues if needed.
-       // OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
-
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
         // OneSignal Initialization
-//        OneSignal.initWithContext(this);
-//        OneSignal.setAppId(this.getResources().getString(R.string.one_signal_app_id));
-
-//        MobileAds.initialize(this);
-//        mInstance = this;
+        OneSignal.initWithContext(this);
+        OneSignal.setAppId(this.getResources().getString(R.string.one_signal_app_id));
         Stetho.initializeWithDefaults(this);
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {

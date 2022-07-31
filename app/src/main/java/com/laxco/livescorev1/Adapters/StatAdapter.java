@@ -47,6 +47,7 @@ public class StatAdapter extends RecyclerView.Adapter<StatAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Stat stat = stats.get(position);

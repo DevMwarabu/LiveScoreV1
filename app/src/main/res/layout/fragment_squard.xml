@@ -4,10 +4,14 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="12dp"
     android:background="?attr/background"
     android:layout_height="match_parent"
     tools:context=".Fragments.FixtureInformation.LineUps">
+
+
+
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,236 +21,215 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.google.android.material.card.MaterialCardView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="?attr/cardBackgroundColor"
-                app:cardUseCompatPadding="true"
-                app:cardElevation="0dp"
-                app:cardCornerRadius="8dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:id="@+id/linear.maain.secon"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_baseline_warning_24"/>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:orientation="horizontal">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:layout_gravity="center"
-                        android:id="@+id/image.league.logo"
-                        app:civ_border_color="@color/primaryColor"
-                        app:civ_border_width="1dp"/>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    app:cardUseCompatPadding="false"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardBackgroundColor="?attr/cardBackgroundColor">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="8dp"
-                        android:orientation="vertical">
+                        android:textAppearance="?textAppearanceCaption"
+                        android:text="Line-Up data will be displayed here"/>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="fill_parent"
-                            android:singleLine="true"
-                            android:layout_height="wrap_content"
-                            android:marqueeRepeatLimit="marquee_forever"
-                            android:ellipsize="marquee"
-                            android:id="@+id/tv.league.name"
-                            android:textAppearance="?textAppearanceHeadline6"/>
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tv.league.country"
-                            android:textColor="@android:color/darker_gray"
-                            android:textAppearance="?textAppearanceCaption"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="?attr/cardBackgroundColor"
-                app:cardUseCompatPadding="true"
-                app:cardElevation="0dp"
-                app:cardCornerRadius="8dp">
-                <LinearLayout
+                android:id="@+id/linear.maain"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:orientation="vertical">
+                    app:cardUseCompatPadding="false"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="8dp">
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:textAppearance="?textAppearanceBody1"
-                            android:textColor="@android:color/darker_gray"
-                            android:text="Referee"/>
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.home.lineup"
+                            android:layout_gravity="center"/>
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:id="@+id/tv.ref"
-                            android:textAppearance="?textAppearanceBody1"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="12dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
+                            android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.away.lineup"
                             android:layout_gravity="center"
-                            android:textAppearance="?textAppearanceBody1"
-                            android:textColor="@android:color/darker_gray"
-                            android:text="Date"/>
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:id="@+id/tv.date.kick.off"
-                            android:textAppearance="?textAppearanceBody1"/>
+                            tools:ignore="RtlCompat" />
                     </LinearLayout>
 
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="12dp"
-                android:textAppearance="?textAppearanceBody1"
-                android:text="Venue details"/>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="?attr/cardBackgroundColor"
-                app:cardUseCompatPadding="true"
-                app:cardElevation="0dp"
-                app:cardCornerRadius="8dp">
-                <LinearLayout
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="textEnd"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@color/shimmer_color"
+                    android:text="PLAYERS"
+                    tools:ignore="RtlCompat" />
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:textAppearance="?textAppearanceBody1"
-                            android:textColor="@android:color/darker_gray"
-                            android:text="Name"/>
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:id="@+id/tv.venue"
-                            android:textAppearance="?textAppearanceBody1"/>
-                    </LinearLayout>
+                    app:cardUseCompatPadding="false"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="8dp">
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:textAppearance="?textAppearanceBody1"
-                            android:textColor="@android:color/darker_gray"
-                            android:text="City"/>
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.home.players"
+                            android:layout_gravity="center"/>
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textAlignment="textEnd"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.away.players"
                             android:layout_gravity="center"
-                            android:id="@+id/tv.city"
-                            android:textAppearance="?textAppearanceBody1"/>
+                            tools:ignore="RtlCompat" />
                     </LinearLayout>
 
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="12dp"
-                android:textAppearance="?textAppearanceBody1"
-                android:text="Status"/>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="?attr/cardBackgroundColor"
-                app:cardUseCompatPadding="true"
-                app:cardElevation="0dp"
-                app:cardCornerRadius="8dp">
-                <LinearLayout
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="textEnd"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@color/shimmer_color"
+                    android:text="SUBSTITUTES PLAYERS"
+                    tools:ignore="RtlCompat" />
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:textAppearance="?textAppearanceBody1"
-                            android:textColor="@android:color/darker_gray"
-                            android:text="Current"/>
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:id="@+id/tv.current"
-                            android:textAppearance="?textAppearanceBody1"/>
-                    </LinearLayout>
+                    app:cardUseCompatPadding="false"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="8dp">
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:textAppearance="?textAppearanceBody1"
-                            android:textColor="@android:color/darker_gray"
-                            android:text="Time elapsed"/>
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.home.sub"
+                            android:layout_gravity="center"/>
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textAlignment="textEnd"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.away.sub"
                             android:layout_gravity="center"
-                            android:id="@+id/tv.time.elapsed"
-                            android:textAppearance="?textAppearanceBody1"/>
+                            tools:ignore="RtlCompat" />
                     </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="textEnd"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@color/shimmer_color"
+                    android:text="COACHES"
+                    tools:ignore="RtlCompat" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardUseCompatPadding="false"
+                    app:cardBackgroundColor="?attr/background"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="0.1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.home.coach"
+                            android:layout_gravity="center"/>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="textEnd"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?textAppearanceCaption"
+                            android:id="@+id/tv.away.coach"
+                            android:layout_gravity="center"
+                            tools:ignore="RtlCompat" />
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
         </LinearLayout>
-
     </ScrollView>
 
 </LinearLayout>

@@ -11,9 +11,9 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 1,
-      "versionName": "1.0",
-      "outputFile": "LiveScore-v1.0.BETA.apk"
+      "versionCode": 3,
+      "versionName": "1.3",
+      "outputFile": "LiveScore-v1.3.BETA.apk"
     }
   ],
   "elementType": "File"

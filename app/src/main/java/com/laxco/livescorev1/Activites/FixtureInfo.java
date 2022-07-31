@@ -49,6 +49,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.CacheControl;
 import okhttp3.Call;
@@ -80,6 +81,7 @@ public class FixtureInfo extends AppCompatActivity {
     private okhttp3.Request request;
     private String url;
     private Gson gson;
+    public static String homeId,awayId;
 
     @SuppressLint("ResourceType")
     @Override
@@ -90,6 +92,7 @@ public class FixtureInfo extends AppCompatActivity {
         id = getIntent().getExtras().getInt("id");
 
         fragments = new ArrayList<>();
+        timer = new Timer();
 
         url = Constants.baseUrl + "fixtures?id=" + String.valueOf(id);
 
@@ -109,11 +112,21 @@ public class FixtureInfo extends AppCompatActivity {
         gson = new Gson();
 
         initViews();
-        //loading tabs
-        addingTabs(tabLayout);
         //loading
         getData();
+        //recall();
 
+    }
+
+    private void recall(){
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                getData();
+            }
+        },  60000);//wait 0 ms before doing the action and do it evry 1000ms (1second)
+
+        timer.cancel();
     }
 
     private void initViews() {
@@ -240,7 +253,8 @@ public class FixtureInfo extends AppCompatActivity {
                                             JSONArray events = jsonObject.getJSONArray("events");
                                             String shortStatus = jsonObject.getJSONObject("fixture").getJSONObject("status").getString("short");
                                             String elapsed = jsonObject.getJSONObject("fixture").getJSONObject("status").getString("elapsed");
-                                            String home_id = jsonObject.getJSONObject("teams").getJSONObject("home").getString("id");
+                                            homeId = jsonObject.getJSONObject("teams").getJSONObject("home").getString("id");
+                                            awayId = jsonObject.getJSONObject("teams").getJSONObject("away").getString("id");
                                             String league = jsonObject.getJSONObject("league").getString("name");
                                             String ref = jsonObject.getJSONObject("fixture").getString("referee");
                                             String date = jsonObject.getJSONObject("fixture").getString("date");
@@ -249,7 +263,10 @@ public class FixtureInfo extends AppCompatActivity {
                                             String leaguetype = jsonObject.getJSONObject("league").getString("round");
                                             String s = jsonObject.getJSONObject("league").getString("season");
                                             //loading data
-                                            setData(homeName, awayName, homeScore, awayScore, home_url, away_url, events, shortStatus, elapsed, home_id,league,ref,venue,leagueLogo,leaguetype,s,date);
+                                            setData(homeName, awayName, homeScore, awayScore, home_url, away_url, events, shortStatus, elapsed, homeId,league,ref,venue,leagueLogo,leaguetype,s,date);
+
+                                            //loading tabs
+                                            addingTabs(tabLayout);
                                         }
 
                                     } catch (IOException e) {
@@ -394,7 +411,17 @@ public class FixtureInfo extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        timer.cancel();
+        super.onStop();
+    }
 
+    @Override
+    protected void onDestroy() {
+        timer.cancel();
+        super.onDestroy();
+    }
 
     public String getSeason() {
         return season;

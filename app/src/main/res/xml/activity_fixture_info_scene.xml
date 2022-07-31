@@ -9,30 +9,10 @@
         motion:duration="1000">
        <KeyFrameSet>
        </KeyFrameSet>
-        <OnSwipe motion:touchAnchorId="@+id/swipe.main" />
+        <OnSwipe motion:touchAnchorId="@+id/nestedScrollView2" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
-        <Constraint
-            android:id="@+id/linearLayout6"
-            motion:layout_constraintEnd_toStartOf="@+id/card.menu"
-            motion:layout_constraintStart_toEndOf="@+id/card.back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@+id/card.back"
-            android:visibility="gone"
-            motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            motion:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-            android:layout_marginStart="8dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="24dp"
-            android:id="@+id/cardView" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">

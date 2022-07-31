@@ -9,13 +9,25 @@
     android:orientation="vertical"
     tools:context=".Fragments.FixtureInformation.LiveInfo">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:trackCornerRadius="8dp"
+        app:indicatorColor="@color/primaryColor"
+        app:trackColor="@color/shimmer_color"
+        android:indeterminate="true"
+        android:id="@+id/progressBar"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/swipe.main"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/linear.maain"
+        android:orientation="vertical">
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:scrollbars="none">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -166,10 +178,19 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:id="@+id/linear.table"
                             android:visibility="gone"
+                            android:id="@+id/linear.table"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="42dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_gravity="center"
+                                android:text="#"
+                                android:visibility="gone"
+                                android:textAppearance="?textAppearanceCaption"
+                                android:textColor="@android:color/darker_gray"/>
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
@@ -279,8 +300,8 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="match_parent"
                             android:layout_marginTop="8dp"
-                            android:layout_height="match_parent"
-                            android:nestedScrollingEnabled="true"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
                             android:id="@+id/rv.standings"/>
                     </LinearLayout>
 
@@ -324,59 +345,9 @@
                                 android:textAppearance="?textAppearanceBody1"/>
                             <LinearLayout
                                 android:layout_width="wrap_content"
+                                android:id="@+id/linear.form.1"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="L"
-                                    android:layout_marginStart="4dp"
-                                    android:id="@+id/tv.f.1"
-                                    android:background="@drawable/circle_item_lose"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="w"
-                                    android:id="@+id/tv.f.2"
-                                    android:layout_marginStart="4dp"
-                                    android:background="@drawable/circle_item"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginStart="4dp"
-                                    android:text="L"
-                                    android:id="@+id/tv.f.3"
-                                    android:background="@drawable/circle_item_lose"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="w"
-                                    android:id="@+id/tv.f.4"
-                                    android:layout_marginStart="4dp"
-                                    android:background="@drawable/circle_item"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="w"
-                                    android:id="@+id/tv.f.5"
-                                    android:layout_marginStart="4dp"
-                                    android:background="@drawable/circle_item"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                            </LinearLayout>
+                                android:orientation="horizontal"/>
 
                         </LinearLayout>
                         <androidx.recyclerview.widget.RecyclerView
@@ -404,58 +375,8 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="L"
-                                    android:layout_marginStart="4dp"
-                                    android:id="@+id/tv.f.1.away"
-                                    android:background="@drawable/circle_item_lose"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="w"
-                                    android:id="@+id/tv.f.2.away"
-                                    android:layout_marginStart="4dp"
-                                    android:background="@drawable/circle_item"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginStart="4dp"
-                                    android:text="L"
-                                    android:id="@+id/tv.f.3.away"
-                                    android:background="@drawable/circle_item_lose"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="w"
-                                    android:id="@+id/tv.f.4.away"
-                                    android:layout_marginStart="4dp"
-                                    android:background="@drawable/circle_item"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:text="w"
-                                    android:id="@+id/tv.f.5.away"
-                                    android:layout_marginStart="4dp"
-                                    android:background="@drawable/circle_item"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/black"
-                                    android:textAppearance="?textAppearanceCaption"/>
-                            </LinearLayout>
+                                android:id="@+id/linear.form.2"
+                                android:orientation="horizontal"/>
 
                         </LinearLayout>
                         <androidx.recyclerview.widget.RecyclerView
@@ -630,7 +551,8 @@
 
             </LinearLayout>
         </ScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
 
 
 </LinearLayout>

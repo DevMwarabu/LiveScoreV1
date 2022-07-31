@@ -1,6 +1,9 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        maven {
+            url "https://maven.google.com"
+        }
         google()
         mavenCentral()
         maven {
@@ -10,11 +13,15 @@ pluginManagement {
         maven { url "https://jitpack.io" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://oss.jfrog.org/libs-snapshot" }
+
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven {
+            url "https://maven.google.com"
+        }
         google()
         mavenCentral()
         // maven { url  "https://dl.bintray.com/lukaville/maven" }

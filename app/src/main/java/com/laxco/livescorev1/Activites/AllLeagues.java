@@ -13,8 +13,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.laxco.livescorev1.Adapters.CountryAdapter;
 import com.laxco.livescorev1.Adapters.FixtureAdapter;

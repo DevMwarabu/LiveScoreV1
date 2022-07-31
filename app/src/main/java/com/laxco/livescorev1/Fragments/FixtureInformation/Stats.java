@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +46,6 @@ public class Stats extends Fragment {
     public static StatAdapter statAdapter;
     private String TAG= "res_beer_stats",fixture_id,away_val,home_val;
     private Context context = FixtureInfo.context;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
     private LinearLayout mLinearLayoutMain,mLinearLayoutSecond;
 
     @Override
@@ -54,12 +54,13 @@ public class Stats extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_stats, container, false);
 
+        FixtureInfo fixtureInfo = (FixtureInfo)getActivity();
+
         stats = new ArrayList<>();
         statAdapter = new StatAdapter(getContext(),stats);
-        fixture_id = FixtureInfo.fixture_id;
+        fixture_id = fixtureInfo.getId();
 
         mRecyclerView = view.findViewById(R.id.rv_main);
-        mSwipeRefreshLayout = view.findViewById(R.id.swipe_main);
         mLinearLayoutMain = view.findViewById(R.id.linear_maain);
         mLinearLayoutSecond = view.findViewById(R.id.linear_maain_secon);
 
@@ -73,32 +74,7 @@ public class Stats extends Fragment {
         mRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
 
-
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.primaryColor,
-                android.R.color.holo_green_dark,
-                android.R.color.holo_orange_dark,
-                android.R.color.holo_blue_dark);
-
-        mSwipeRefreshLayout.post(new Runnable() {
-
-            @Override
-            public void run() {
-                mSwipeRefreshLayout.setRefreshing(true);
-                loadData(fixture_id);
-
-            }
-        });
-
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                statAdapter.clear();
-                statAdapter.addAll(stats);
-                //load in priority
-                loadData(fixture_id);
-
-            }
-        });
+        loadData(fixture_id);
 
 
 
@@ -132,13 +108,8 @@ public class Stats extends Fragment {
                                         home_val = jsonObject.getString("value");
                                         away_val = jsonArray.getJSONObject(1).getJSONArray("statistics").getJSONObject(i).getString("value");
 
-                                        if (home_val == "null" ){
-                                            home_val = "0";
-                                        }
-
-                                        if (away_val == "null"){
-                                            away_val = "0";
-                                        }
+                                        String home_value = home_val.equals("null")?"0":home_val;
+                                        String away_value = away_val.equals("null")?"0":away_val;
                                         if (home_val.contains("%") && !home_val.equals("0")){
 
                                             String f_home_val = home_val.substring(0, home_val.length()-1);
@@ -150,21 +121,18 @@ public class Stats extends Fragment {
                                             Log.d("StringBuffers",home_val+"to "+f_home_val.toString()+" and "+away_val+" to "+f_away_val.toString());
                                         }else {
 
-                                            stats.add(new Stat(type,home_val,away_val,true));
+                                            stats.add(new Stat(type,home_value,away_value,true));
 
                                         }
 
                                         mRecyclerView.setAdapter(statAdapter);
+                                        statAdapter.notifyDataSetChanged();
                                         if (i ==(statistics.length()-1)){
-                                            mSwipeRefreshLayout.setRefreshing(false);
+                                            toggleView(false);
                                         }
                                     }
                                 }else {
-                                    Toast.makeText(context, "No stats available..!", Toast.LENGTH_SHORT).show();
-                                    mSwipeRefreshLayout.setRefreshing(false);
-                                   // FixtureInfo.viewPager.setCurrentItem(1,true);
-                                    mLinearLayoutMain.setVisibility(View.GONE);
-                                    mLinearLayoutSecond.setVisibility(View.VISIBLE);
+                                    toggleView(true);
 
                                 }
 
@@ -173,18 +141,13 @@ public class Stats extends Fragment {
 
                     }else {
                         Toast.makeText(context, "No stats available..!", Toast.LENGTH_SHORT).show();
-                       // FixtureInfo.viewPager.setCurrentItem(1,true);
-                        mSwipeRefreshLayout.setRefreshing(false);
-                        mLinearLayoutMain.setVisibility(View.GONE);
-                        mLinearLayoutSecond.setVisibility(View.VISIBLE);
+                        toggleView(true);
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.i(TAG, "[" + e.getMessage() + "]");
-                    mSwipeRefreshLayout.setRefreshing(false);
-                    mLinearLayoutMain.setVisibility(View.GONE);
-                    mLinearLayoutSecond.setVisibility(View.VISIBLE);
+                    toggleView(true);
                 }
 
             }
@@ -192,9 +155,7 @@ public class Stats extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG, "[" + error.getMessage() + "]");
-                mSwipeRefreshLayout.setRefreshing(false);
-                mLinearLayoutMain.setVisibility(View.GONE);
-                mLinearLayoutSecond.setVisibility(View.VISIBLE);
+                toggleView(true);
             }
         }) {
             @Override
@@ -209,5 +170,21 @@ public class Stats extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         //adding the string request to request queue
         requestQueue.add(jsonObjectRequest);
+    }
+
+    private void toggleView(boolean isEmpty) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isEmpty) {
+                    mLinearLayoutMain.setVisibility(View.GONE);
+                    mLinearLayoutSecond.setVisibility(View.VISIBLE);
+                } else {
+                    mLinearLayoutSecond.setVisibility(View.GONE);
+                    mLinearLayoutMain.setVisibility(View.VISIBLE);
+                }
+            }
+        },3000);
+        ;
     }
 }

@@ -2,65 +2,194 @@ package com.laxco.livescorev1.Fragments.FixtureInformation;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.laxco.livescorev1.Activites.FixtureInfo;
+import com.laxco.livescorev1.Adapters.FixtureAdapter;
+import com.laxco.livescorev1.Adapters.LineUpAdapter;
+import com.laxco.livescorev1.Constants.Constants;
+import com.laxco.livescorev1.Models.Fixture;
+import com.laxco.livescorev1.Models.Lineupitem;
 import com.laxco.livescorev1.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Summary#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Timer;
+
+import okhttp3.CacheControl;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.ConnectionSpec;
+import okhttp3.OkHttpClient;
+
 public class Summary extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Summary() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Summary.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Summary newInstance(String param1, String param2) {
-        Summary fragment = new Summary();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private View view;
+    private List<Lineupitem> lineupitems;
+    private LineUpAdapter lineUpAdapter;
+    private RecyclerView mRecyclerView;
+    private OkHttpClient client;
+    private okhttp3.Request request;
+    private String url = "";
+    private LinearLayout mLinearLayoutMain, mLinearLayoutSecond;
+    private String TAG = "Demo";
+    private Timer timer = new Timer();
+    private com.google.android.gms.ads.interstitial.InterstitialAd mInterstitialAd;
+    private Gson gson;
+    private String season,homeId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        FixtureInfo fixtureInfo = (FixtureInfo)getActivity();
+
+        lineupitems = new ArrayList<>();
+
+        homeId = FixtureInfo.homeId;
+
+        season = fixtureInfo.getSeason();
+        url = Constants.baseUrl + "fixtures/events?fixture="+fixtureInfo.getId();
+
+        //initilizing okhttp varriables
+        client = new OkHttpClient.Builder()
+                .connectionSpecs(Collections.singletonList(ConnectionSpec.COMPATIBLE_TLS))
+                .build();
+
+        request = new okhttp3.Request.Builder()
+                .url(url)
+                .get()
+                .addHeader("X-RapidAPI-Key", Constants._key)
+                .addHeader("X-RapidAPI-Host", Constants._host)
+                .cacheControl(new CacheControl.Builder().noCache().build())
+                .build();
+
+        gson = new Gson();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_summary, container, false);
+        view =  inflater.inflate(R.layout.fragment_summary, container, false);
+
+        mRecyclerView = view.findViewById(R.id.rv_main);
+        mLinearLayoutMain = view.findViewById(R.id.linear_maain);
+        mLinearLayoutSecond = view.findViewById(R.id.linear_maain_secon);
+
+        //load recycle
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setItemViewCacheSize(20);
+        mRecyclerView.setDrawingCacheEnabled(true);
+        mRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+
+        loadData(season,homeId);
+
+        return view;
+    }
+
+    private void loadData(String season,String homeId) {
+        client.newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull okhttp3.Response response) throws IOException {
+                        //usimgUIThread
+                        if (response.isSuccessful()) {
+                            if (getActivity() !=null) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            String responseData = response.body().string();
+                                            JSONArray responseArray = new JSONObject(responseData).getJSONArray("response");
+
+                                            if (responseArray.length() > 0) {
+                                                for (int i = 0; i < responseArray.length(); i++) {
+                                                    JSONObject jsonObject = responseArray.getJSONObject(i);
+                                                    String team_id = jsonObject.getJSONObject("team").getString("id");
+                                                    String type = jsonObject.getString("type");
+                                                    String details = jsonObject.getString("detail");
+                                                    JSONObject time = jsonObject.getJSONObject("time");
+                                                    JSONObject player = jsonObject.getJSONObject("player");
+
+                                                    if (team_id.equals(homeId)){
+                                                        //adding to model
+                                                        lineupitems.add(new Lineupitem(team_id,type,details,time,player,true,season));
+                                                    }else {
+                                                        //adding to model
+                                                        lineupitems.add(new Lineupitem(team_id,type,details,time,player,false,season));
+                                                    }
+
+                                                    if (i == (responseArray.length() - 1)) {
+                                                        lineUpAdapter = new LineUpAdapter(getContext(), lineupitems);
+                                                        lineUpAdapter.setHasStableIds(true);
+                                                        mRecyclerView.setAdapter(lineUpAdapter);
+
+                                                        response.body().close();
+                                                        lineUpAdapter.notifyDataSetChanged();
+                                                        toggleView(false);
+                                                    }
+                                                }
+                                            }else {
+
+                                                toggleView(true);
+                                            }
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                        } else {
+                            Toast.makeText(getContext(), "Something went wrong please try again...!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void toggleView(boolean isEmpty) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isEmpty) {
+                    mLinearLayoutMain.setVisibility(View.GONE);
+                    mLinearLayoutSecond.setVisibility(View.VISIBLE);
+                } else {
+                    mLinearLayoutSecond.setVisibility(View.GONE);
+                    mLinearLayoutMain.setVisibility(View.VISIBLE);
+                }
+            }
+        },3000);
+        ;
     }
 }

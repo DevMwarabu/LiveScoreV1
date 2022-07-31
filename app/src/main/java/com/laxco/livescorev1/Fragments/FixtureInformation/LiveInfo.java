@@ -35,8 +35,17 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.gson.Gson;
 import com.laxco.livescorev1.Activites.FixtureInfo;
+import com.laxco.livescorev1.Adapters.FixtureAdapter;
+import com.laxco.livescorev1.Adapters.FixtureLastAdapter;
+import com.laxco.livescorev1.Adapters.FixtureLastHomeAdapter;
 import com.laxco.livescorev1.Adapters.LineUpAdapter;
 import com.laxco.livescorev1.Adapters.StandingAdapter;
 import com.laxco.livescorev1.Adapters.StandingAwayAdapter;
@@ -45,6 +54,8 @@ import com.laxco.livescorev1.Adapters.StandingLandAwayScapeAdapter;
 import com.laxco.livescorev1.Adapters.StandingLandHomeScapeAdapter;
 import com.laxco.livescorev1.Adapters.StandingLandScapeAdapter;
 import com.laxco.livescorev1.Constants.Constants;
+import com.laxco.livescorev1.Models.Fixture;
+import com.laxco.livescorev1.Models.FixtureHome;
 import com.laxco.livescorev1.Models.Lineupitem;
 import com.laxco.livescorev1.Models.Standing;
 import com.laxco.livescorev1.R;
@@ -73,24 +84,31 @@ import okhttp3.OkHttpClient;
 public class LiveInfo extends Fragment {
     private View view;
     private CardView mCardViewPredictions;
-    private LinearLayout mLinearLayoutPrediction,mLinearLayoutTable;
+    private LinearLayout mLinearLayoutPrediction,mLinearLayoutTable,mLinearLayoutF1,mLinearLayoutF2,mLinearLayoutMain;
     private TextView mHomeTeam,mAwayTem,mDate,mRef,mStadium,mLeagueName,mLeagueType,mClickToView,mPercentageHome,mPercentageDraw,mPercentageAway,mAdvice;
     private RecyclerView mRecyclerviewTable,mRecyclerViewHome,mRecyclerViewAway;
     private ProgressBar mProgressBarHome,mProgressBarDraw,mProgressBarAway;
     private OkHttpClient client;
     private okhttp3.Request request;
     private String url;
+    private ProgressBar progressBar;
     private Gson gson;
     private ImageView mLeagueLogo;
     private List<Standing> standings;
     private StandingAdapter standingAdapter;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private List<Fixture> fixtures;
+    private List<FixtureHome> fixtureHomes;
+    private FixtureLastAdapter fixtureLastAdapter;
+    private FixtureLastHomeAdapter fixtureLastHomeAdapter;
+    private RewardedAd mRewardedAd;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         standings = new ArrayList<>();
+        fixtures = new ArrayList<>();
+        fixtureHomes = new ArrayList<>();
     }
 
     @Override
@@ -117,6 +135,8 @@ public class LiveInfo extends Fragment {
                 .build();
 
         gson = new Gson();
+
+        loadReaward();
 
 
         initView(view,fixtureInfo.getId());
@@ -149,9 +169,12 @@ public class LiveInfo extends Fragment {
         mRecyclerViewAway = view.findViewById(R.id.rv_away);
         mRecyclerViewHome = view.findViewById(R.id.rv_home);
         mRecyclerviewTable = view.findViewById(R.id.rv_standings);
-        mSwipeRefreshLayout = view.findViewById(R.id.swipe_main);
         mLinearLayoutTable = view.findViewById(R.id.linear_table);
         mAdvice = view.findViewById(R.id.tv_advice);
+        mLinearLayoutF1 = view.findViewById(R.id.linear_form_1);
+        mLinearLayoutF2 = view.findViewById(R.id.linear_form_2);
+        mLinearLayoutMain = view.findViewById(R.id.linear_maain);
+        progressBar = view.findViewById(R.id.progressBar);
 
        // mCardViewPredictions.setEnabled(false);
 
@@ -165,38 +188,53 @@ public class LiveInfo extends Fragment {
         mRecyclerviewTable.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         mRecyclerviewTable.setLayoutManager(layoutManagerResults);
 
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.primaryColor,
-                android.R.color.holo_green_dark,
-                android.R.color.holo_orange_dark,
-                android.R.color.holo_blue_dark);
 
-        mSwipeRefreshLayout.post(new Runnable() {
+        final LinearLayoutManager layoutManagerHome = new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false);
+        layoutManagerHome.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mRecyclerViewHome.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerViewHome.setHasFixedSize(true);
+        mRecyclerViewHome.setItemViewCacheSize(20);
+        mRecyclerViewHome.setDrawingCacheEnabled(true);
+        mRecyclerViewHome.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        mRecyclerViewHome.setLayoutManager(layoutManagerHome);
 
-            @Override
-            public void run() {
-              //  mSwipeRefreshLayout.setRefreshing(true);
-                getData(fixture_id);
 
-            }
-        });
+        final LinearLayoutManager layoutManagerAway = new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false);
+        layoutManagerAway.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mRecyclerViewAway.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerViewAway.setHasFixedSize(true);
+        mRecyclerViewAway.setItemViewCacheSize(20);
+        mRecyclerViewAway.setDrawingCacheEnabled(true);
+        mRecyclerViewAway.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        mRecyclerViewAway.setLayoutManager(layoutManagerAway);
 
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                standingAdapter.clear();
-                standingAdapter.addAll(standings);
-                //load in priority
-                getData(fixture_id);
 
-            }
-        });
+        getData(fixture_id);
 
         mCardViewPredictions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mClickToView.setVisibility(View.GONE);
-                mLinearLayoutPrediction.setVisibility(View.VISIBLE);
-                mAdvice.setVisibility(View.VISIBLE);
+                if (mRewardedAd != null) {
+                    mRewardedAd.show(getActivity(), new OnUserEarnedRewardListener() {
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                            // Handle the reward.
+                            Log.d(TAG, "The user earned the reward.");
+                            int rewardAmount = rewardItem.getAmount();
+                            String rewardType = rewardItem.getType();
+
+                            mClickToView.setVisibility(View.GONE);
+                            mLinearLayoutPrediction.setVisibility(View.VISIBLE);
+                            mAdvice.setVisibility(View.VISIBLE);
+
+                            Log.d("Rewarded",""+rewardAmount+" type "+rewardType);
+                        }
+                    });
+                } else {
+                    mClickToView.setVisibility(View.GONE);
+                    mLinearLayoutPrediction.setVisibility(View.VISIBLE);
+                    mAdvice.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -292,6 +330,9 @@ public class LiveInfo extends Fragment {
 
         }
         loadTable(leagueId,season,homeId,awayId,fixture_id);
+        loadForms(homeId,season,leagueId);
+        loadFormsAway(awayId,season,leagueId);
+        loadHAFixture(homeId,awayId,season);
 
         Log.d("Value passe ",""+lType);
     }
@@ -330,47 +371,48 @@ public class LiveInfo extends Fragment {
                                         try {
                                             String responseData = response.body().string();
                                             JSONArray responseArray = new JSONObject(responseData).getJSONArray("response");
-                                            JSONObject league = responseArray.getJSONObject(0).getJSONObject("league");
-                                            JSONArray standings_all = league.getJSONArray("standings");
-                                            JSONArray resData = standings_all.getJSONArray(0);
+                                            if (responseArray.length()>0){
+                                                JSONObject league = responseArray.getJSONObject(0).getJSONObject("league");
+                                                JSONArray standings_all = league.getJSONArray("standings");
+                                                JSONArray resData = standings_all.getJSONArray(0);
 
 
-                                            if (resData.length() > 0) {
+                                                if (resData.length() > 0) {
 
-                                                for (int i = 0; i < resData.length(); i++) {
-                                                    JSONObject jsonObject = resData.getJSONObject(i);
+                                                    for (int i = 0; i < resData.length(); i++) {
+                                                        JSONObject jsonObject = resData.getJSONObject(i);
 
-                                                    JSONObject all = jsonObject.getJSONObject("all");
-                                                    JSONObject goals  = all.getJSONObject("goals");
-                                                    String rank =  jsonObject.getString("rank");
-                                                    String points = jsonObject.getString("points");
-                                                    String gd=jsonObject.getString("goalsDiff");
-                                                    JSONObject team = jsonObject.getJSONObject("team");
-                                                    JSONObject home = jsonObject.getJSONObject("home");
-                                                    JSONObject away = jsonObject.getJSONObject("away");
+                                                        JSONObject all = jsonObject.getJSONObject("all");
+                                                        JSONObject goals  = all.getJSONObject("goals");
+                                                        String rank =  jsonObject.getString("rank");
+                                                        String points = jsonObject.getString("points");
+                                                        String gd=jsonObject.getString("goalsDiff");
+                                                        JSONObject team = jsonObject.getJSONObject("team");
+                                                        JSONObject home = jsonObject.getJSONObject("home");
+                                                        JSONObject away = jsonObject.getJSONObject("away");
 
-                                                    if (team.getString("id").equals(homeId) || team.getString("id").equals(awayId)){
-                                                        //adding to model
-                                                        standings.add(new Standing(team,all,goals,rank,points,gd,home,away));
+                                                        if (team.getString("id").equals(homeId) || team.getString("id").equals(awayId)){
+                                                            //adding to model
+                                                            standings.add(new Standing(team,all,goals,rank,points,gd,home,away));
 
-                                                        mLinearLayoutTable.setVisibility(View.VISIBLE);
+                                                            mLinearLayoutTable.setVisibility(View.VISIBLE);
 
-                                                        standingAdapter = new StandingAdapter(getContext(), standings,season,leagueId);
-                                                        standingAdapter.setHasStableIds(true);
+                                                            standingAdapter = new StandingAdapter(getContext(), standings,season,leagueId);
+                                                            standingAdapter.setHasStableIds(true);
 
-                                                        mRecyclerviewTable.setAdapter(standingAdapter);
+                                                            mRecyclerviewTable.setAdapter(standingAdapter);
 
-                                                        response.body().close();
-                                                        standingAdapter.notifyDataSetChanged();
-                                                        if (standings.size()>1){
-                                                            loadPrediction(fixture_id);
-                                                            mSwipeRefreshLayout.setRefreshing(false);
-                                                            break;
+                                                            response.body().close();
+                                                            standingAdapter.notifyDataSetChanged();
+                                                            if (standings.size()>1){
+                                                                loadPrediction(fixture_id);
+                                                                Log.d("Standings size",""+standings.size());
+                                                                break;
+                                                            }
                                                         }
                                                     }
                                                 }
-                                            }else {
-                                                mSwipeRefreshLayout.setRefreshing(false);
+
                                             }
                                         } catch (IOException e) {
                                             e.printStackTrace();
@@ -380,8 +422,6 @@ public class LiveInfo extends Fragment {
                                     }
                                 });
                             }
-                        }else {
-                            mSwipeRefreshLayout.setRefreshing(false);
                         }
                     }
                 });
@@ -454,9 +494,363 @@ public class LiveInfo extends Fragment {
                                 });
                             }
                         }else {
-                            mSwipeRefreshLayout.setRefreshing(false);
                             mAdvice.setText("No predictions votes available");
                         }
+                    }
+                });
+
+    }
+
+    private void loadForms(String homeId,String season,String leagueId){
+        String url_= Constants.baseUrl+"teams/statistics?league="+leagueId+"&season="+season+"&team="+homeId;
+        request = new okhttp3.Request.Builder()
+                .url(url_)
+                .get()
+                .addHeader("X-RapidAPI-Key", Constants._key)
+                .addHeader("X-RapidAPI-Host", Constants._host)
+                .cacheControl(new CacheControl.Builder().noCache().build())
+                .build();
+
+        //initilizing okhttp varriables
+        client = new OkHttpClient.Builder()
+                .connectionSpecs(Collections.singletonList(ConnectionSpec.COMPATIBLE_TLS))
+                .build();
+
+        client.newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull okhttp3.Response response) throws IOException {
+                        //usimgUIThread
+                        if (response.isSuccessful()){
+                            if (getActivity() !=null){
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @SuppressLint({"UseCompatLoadingForDrawables", "ResourceType", "NewApi"})
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            String responseData = response.body().string();
+                                            JSONObject jsonObject = new JSONObject(responseData).getJSONObject("response");
+                                            String form = jsonObject.getString("form");
+                                            if (!form.equals("null")){
+                                                String  name = jsonObject.getJSONObject("team").getString("name");
+                                                if (form.toCharArray().length>5){
+
+                                                    char last_5[] = form.substring((form.length()-5)).toCharArray();
+                                                    for(char c : last_5){
+                                                        //generate chars
+                                                        Log.d("Form ",form+"   Team"+name+" "+c);
+                                                        TextView textView = new TextView(getContext());
+                                                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                                                        params.setMargins(4,0,4,0);
+                                                        textView.setLayoutParams(params);
+                                                        textView.setText(String.valueOf(c));
+                                                        if (c == 'W'){
+                                                            textView.setBackground(getActivity().getResources().getDrawable(R.drawable.circle_item));
+                                                        } else if (c == 'L'){
+                                                            textView.setBackground(getActivity().getResources().getDrawable(R.drawable.circle_item_lose));
+                                                        }else {
+                                                            textView.setBackground(getActivity().getResources().getDrawable(R.drawable.circle_item_draw));
+                                                        }
+                                                        textView.setPadding(8, 2, 8, 2);
+//                                                        textView.setWidth(20);
+//                                                        textView.setHeight(20);
+                                                        textView.setTextAppearance(android.R.style.TextAppearance_Material_Caption);
+                                                        //textView.setTextAppearance(com.skydoves.powermenu.R.attr.textAppearanceCaption);
+                                                        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                                        mLinearLayoutF1.addView(textView);
+                                                    }
+                                                }
+                                            }
+
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                        }else {
+                            Log.d("Form ","form failed..!"+response.body().string());
+                        }
+                    }
+                });
+
+
+    }
+
+    private void loadFormsAway(String homeId,String season,String leagueId){
+        String url_= Constants.baseUrl+"teams/statistics?league="+leagueId+"&season="+season+"&team="+homeId;
+        request = new okhttp3.Request.Builder()
+                .url(url_)
+                .get()
+                .addHeader("X-RapidAPI-Key", Constants._key)
+                .addHeader("X-RapidAPI-Host", Constants._host)
+                .cacheControl(new CacheControl.Builder().noCache().build())
+                .build();
+
+        //initilizing okhttp varriables
+        client = new OkHttpClient.Builder()
+                .connectionSpecs(Collections.singletonList(ConnectionSpec.COMPATIBLE_TLS))
+                .build();
+
+        client.newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull okhttp3.Response response) throws IOException {
+                        //usimgUIThread
+                        if (response.isSuccessful()){
+                            if (getActivity() !=null){
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @SuppressLint({"UseCompatLoadingForDrawables", "ResourceType", "NewApi"})
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            String responseData = response.body().string();
+                                            JSONObject jsonObject = new JSONObject(responseData).getJSONObject("response");
+                                            String form = jsonObject.getString("form");
+                                            if (!form.equals("null")){
+                                                String  name = jsonObject.getJSONObject("team").getString("name");
+                                                if (form.toCharArray().length>5){
+
+                                                    char last_5[] = form.substring((form.length()-5)).toCharArray();
+                                                    for(char c : last_5){
+                                                        //generate chars
+                                                        Log.d("Form ",form+"   Team"+name+" "+c);
+                                                        TextView textView = new TextView(getContext());
+                                                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                                                        params.setMargins(4,0,4,0);
+                                                        textView.setLayoutParams(params);
+                                                        textView.setText(String.valueOf(c));
+                                                        if (c == 'W'){
+                                                            textView.setBackground(getActivity().getResources().getDrawable(R.drawable.circle_item));
+                                                        } else if (c == 'L'){
+                                                            textView.setBackground(getActivity().getResources().getDrawable(R.drawable.circle_item_lose));
+                                                        }else {
+                                                            textView.setBackground(getActivity().getResources().getDrawable(R.drawable.circle_item_draw));
+                                                        }
+                                                        textView.setPadding(8, 2, 8, 2);
+//                                                        textView.setWidth(20);
+//                                                        textView.setHeight(20);
+                                                        textView.setTextAppearance(android.R.style.TextAppearance_Material_Caption);
+                                                        //textView.setTextAppearance(com.skydoves.powermenu.R.attr.textAppearanceCaption);
+                                                        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                                        mLinearLayoutF2.addView(textView);
+                                                    }
+                                                }
+                                            }
+
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                        }else {
+                            Log.d("Form ","form failed..!"+response.body().string());
+                        }
+                    }
+                });
+
+
+    }
+
+    private void loadHAFixture(String id_home,String id_away,String season){
+
+        String url_= Constants.baseUrl+"fixtures?season="+season+"&team="+id_home+"&last=5";
+        request = new okhttp3.Request.Builder()
+                .url(url_)
+                .get()
+                .addHeader("X-RapidAPI-Key", Constants._key)
+                .addHeader("X-RapidAPI-Host", Constants._host)
+                .cacheControl(new CacheControl.Builder().noCache().build())
+                .build();
+
+        //initilizing okhttp varriables
+        client = new OkHttpClient.Builder()
+                .connectionSpecs(Collections.singletonList(ConnectionSpec.COMPATIBLE_TLS))
+                .build();
+
+
+        client.newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull okhttp3.Response response) throws IOException {
+                        //usimgUIThread
+                        if (response.isSuccessful()) {
+                            if (getActivity() !=null) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            String responseData = response.body().string();
+                                            JSONArray responseArray = new JSONObject(responseData).getJSONArray("response");
+
+                                            if (responseArray.length() > 0) {
+                                                for (int i = 0; i < responseArray.length(); i++) {
+                                                    JSONObject jsonObject = responseArray.getJSONObject(i);
+
+                                                    JSONObject fixture = jsonObject.getJSONObject("fixture");
+                                                    JSONObject teams = jsonObject.getJSONObject("teams");
+                                                    JSONObject goals = jsonObject.getJSONObject("goals");
+                                                    JSONObject league = jsonObject.getJSONObject("league");
+                                                    String elapsed = fixture.getJSONObject("status").getString("elapsed");
+                                                    String home = teams.getJSONObject("home").getString("name");
+                                                    String away = teams.getJSONObject("away").getString("name");
+                                                    String leaguename = league.getString("name");
+
+                                                    Log.d(TAG, "league " + leaguename);
+                                                    //adding to model
+                                                    fixtureHomes.add(new FixtureHome(teams, goals, league, fixture, elapsed, home, away, leaguename));
+
+                                                    if (i == (responseArray.length() - 1)) {
+                                                        fixtureLastHomeAdapter = new FixtureLastHomeAdapter(getContext(), fixtureHomes);
+                                                        fixtureLastHomeAdapter.setHasStableIds(true);
+                                                        mRecyclerViewHome.setAdapter(fixtureLastHomeAdapter);
+
+                                                        response.body().close();
+                                                        fixtureLastHomeAdapter.notifyDataSetChanged();
+
+                                                        loadHAFixture(id_away,season);
+                                                    }
+                                                }
+                                            }
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                        } else {
+                            Toast.makeText(getContext(), "Something went wrong please try again...!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+    }
+
+    private void loadHAFixture(String id_away,String season){
+
+        String url_= Constants.baseUrl+"fixtures?season="+season+"&team="+id_away+"&last=5";
+        request = new okhttp3.Request.Builder()
+                .url(url_)
+                .get()
+                .addHeader("X-RapidAPI-Key", Constants._key)
+                .addHeader("X-RapidAPI-Host", Constants._host)
+                .cacheControl(new CacheControl.Builder().noCache().build())
+                .build();
+
+        //initilizing okhttp varriables
+        client = new OkHttpClient.Builder()
+                .connectionSpecs(Collections.singletonList(ConnectionSpec.COMPATIBLE_TLS))
+                .build();
+
+
+        client.newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull okhttp3.Response response) throws IOException {
+                        //usimgUIThread
+                        if (response.isSuccessful()) {
+                            if (getActivity() !=null) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            String responseData = response.body().string();
+                                            JSONArray responseArray = new JSONObject(responseData).getJSONArray("response");
+
+                                            if (responseArray.length() > 0) {
+                                                for (int i = 0; i < responseArray.length(); i++) {
+                                                    JSONObject jsonObject = responseArray.getJSONObject(i);
+
+                                                    JSONObject fixture = jsonObject.getJSONObject("fixture");
+                                                    JSONObject teams = jsonObject.getJSONObject("teams");
+                                                    JSONObject goals = jsonObject.getJSONObject("goals");
+                                                    JSONObject league = jsonObject.getJSONObject("league");
+                                                    String elapsed = fixture.getJSONObject("status").getString("elapsed");
+                                                    String home = teams.getJSONObject("home").getString("name");
+                                                    String away = teams.getJSONObject("away").getString("name");
+                                                    String leaguename = league.getString("name");
+
+                                                    Log.d(TAG, "league " + leaguename);
+                                                    //adding to model
+                                                    fixtures.add(new Fixture(teams, goals, league, fixture, elapsed, home, away, leaguename));
+
+                                                    if (i == (responseArray.length() - 1)) {
+                                                        fixtureLastAdapter = new FixtureLastAdapter(getContext(), fixtures);
+                                                        fixtureLastAdapter.setHasStableIds(true);
+                                                        mRecyclerViewAway.setAdapter(fixtureLastAdapter);
+
+                                                        response.body().close();
+                                                        fixtureLastAdapter.notifyDataSetChanged();
+
+                                                        progressBar.setVisibility(View.GONE);
+                                                        mLinearLayoutMain.setVisibility(View.VISIBLE);
+                                                    }
+                                                }
+                                            }else {
+                                                progressBar.setVisibility(View.GONE);
+                                                mLinearLayoutMain.setVisibility(View.VISIBLE);
+                                            }
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                        } else {
+                            progressBar.setVisibility(View.GONE);
+                            mLinearLayoutMain.setVisibility(View.VISIBLE);
+                            Toast.makeText(getContext(), "Something went wrong please try again...!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+    }
+
+    private void loadReaward(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        RewardedAd.load(getContext(), getContext().getResources().getString(R.string.reward_ad),
+                adRequest, new RewardedAdLoadCallback() {
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error.
+                        Log.d(TAG, loadAdError.toString());
+                        mRewardedAd = null;
+                    }
+
+                    @Override
+                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                        mRewardedAd = rewardedAd;
+                        Log.d(TAG, "Ad was loaded.");
                     }
                 });
 

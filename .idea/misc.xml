@@ -6,6 +6,7 @@
         <entry key="../../../../../../layout/custom_preview.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/drawable-v24/ad_call_to_action_small.xml" value="0.198" />
         <entry key="app/src/main/res/drawable/circle_item.xml" value="0.1615" />
+        <entry key="app/src/main/res/drawable/circle_item_draw.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/circle_item_lose.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/gradient_back.xml" value="0.198" />
         <entry key="app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.198" />
@@ -16,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_all_leagues.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/activity_countries.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_fixture_info.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_fixture_info.xml" value="0.17981072555205047" />
         <entry key="app/src/main/res/layout/activity_league_info.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_more_lives.xml" value="0.3307291666666667" />
@@ -27,7 +28,7 @@
         <entry key="app/src/main/res/layout/country_item.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/dialog_opening_team_fixture.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/dialog_themes.xml" value="0.3307291666666667" />
-        <entry key="app/src/main/res/layout/event_item_away.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/event_item_away.xml" value="0.18" />
         <entry key="app/src/main/res/layout/event_item_home.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fixture_item.xml" value="0.3583934088568486" />
         <entry key="app/src/main/res/layout/fixture_more_item.xml" value="0.3307291666666667" />
@@ -36,6 +37,7 @@
         <entry key="app/src/main/res/layout/fragment_frag_cal.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/fragment_frag_dashboard.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/fragment_frag_today.xml" value="0.32222222222222224" />
+        <entry key="app/src/main/res/layout/fragment_h2_h.xml" value="0.248046875" />
         <entry key="app/src/main/res/layout/fragment_laundry_parent.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/fragment_live_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_matches.xml" value="0.3307291666666667" />
@@ -43,9 +45,11 @@
         <entry key="app/src/main/res/layout/fragment_player_stats.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/fragment_prev_date.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/fragment_squard.xml" value="0.3307291666666667" />
-        <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.3819444444444444" />
+        <entry key="app/src/main/res/layout/fragment_summary.xml" value="0.248046875" />
         <entry key="app/src/main/res/layout/fragment_tables.xml" value="0.32222222222222224" />
         <entry key="app/src/main/res/layout/games_item.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/last_game_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/leagues_item.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/lineupitem.xml" value="0.248046875" />
         <entry key="app/src/main/res/layout/match_item.xml" value="0.3307291666666667" />

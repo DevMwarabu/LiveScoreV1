@@ -4,37 +4,38 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:padding="12dp"
     android:background="?attr/background"
-    android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".Fragments.FixtureInformation.Stats">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:padding="8dp"
         android:visibility="gone"
-        android:id="@+id/linear.maain.secon">
+        android:id="@+id/linear.maain.secon"
+        android:orientation="horizontal">
         <ImageView
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:scaleType="fitCenter"
-            android:id="@+id/image.main"
-            app:tint="@null"
-            android:src="@drawable/ic_undraw_void__3_ggu"
-            android:layout_gravity="center"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv.league.name"
-            android:layout_width="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_baseline_warning_24"/>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:textAppearance="?textAppearanceCaption"
-            android:textAlignment="center"
-            android:text="No match stats found"/>
+            app:cardUseCompatPadding="false"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="0dp"
+            app:cardBackgroundColor="?attr/cardBackgroundColor">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?textAppearanceCaption"
+                android:text="Match status will be displayed here"/>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
     <LinearLayout
@@ -42,37 +43,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/linear.maain"
         android:orientation="vertical">
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe.main"
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.core.widget.NestedScrollView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardUseCompatPadding="false"
+            app:cardBackgroundColor="?attr/background"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="0.1dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv.main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:scrollbars="none">
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:strokeWidth="0.1dp"
-                    app:strokeColor="@color/shimmer_color"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="?attr/background"
-                    app:cardUseCompatPadding="false">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv.main"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:nestedScrollingEnabled="false" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </androidx.core.widget.NestedScrollView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                android:nestedScrollingEnabled="true" />
+
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

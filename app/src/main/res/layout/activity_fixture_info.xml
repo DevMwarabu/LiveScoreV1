@@ -160,6 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -175,9 +176,9 @@
                     android:id="@+id/view.status"
                     android:layout_width="4dp"
                     android:layout_height="24dp"
-                    android:visibility="gone"
                     android:layout_gravity="center"
-                    android:background="@drawable/shape_game_status" />
+                    android:background="@drawable/shape_game_status"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -189,8 +190,8 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <ImageView
@@ -218,18 +219,18 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <LinearLayout
+                            android:id="@+id/linear.time.main"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:visibility="gone"
-                            android:id="@+id/linear.time.main"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/tv.time.kick.off"
@@ -243,17 +244,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:textColor="@color/shimmer_color"
-                                android:textAppearance="?textAppearanceCaption" />
+                                android:textAppearance="?textAppearanceCaption"
+                                android:textColor="@color/shimmer_color" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/linear.scores.main"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:visibility="gone"
-                            android:id="@+id/linear.scores.main"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:visibility="gone">
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/tv.home.score"
@@ -284,18 +285,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:visibility="gone"
                             android:layout_marginTop="4dp"
                             android:textAppearance="?textAppearanceCaption"
-                            android:textColor="@color/primaryColor" />
+                            android:textColor="@color/primaryColor"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <ImageView
@@ -320,28 +321,30 @@
 
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/linear.scores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:id="@+id/linear.scores"
-                android:visibility="gone"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv.home.scorers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?textAppearanceCaption"
                     android:layout_marginEnd="4dp"
+                    android:textAppearance="?textAppearanceCaption"
                     tools:ignore="SmallSp" />
+
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:scaleType="fitCenter"
-                    app:tint="@android:color/darker_gray"
-                    android:src="@drawable/ic_baseline_sports_soccer_24"/>
+                    android:src="@drawable/ic_baseline_sports_soccer_24"
+                    app:tint="@android:color/darker_gray" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv.away.scorers"
@@ -355,101 +358,91 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe.main"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv.league.name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textAppearance="?textAppearanceHeadline4"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Fixture analysis"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:visibility="gone"
+                app:fontFamily="@font/semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv.title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:textAppearance="?textAppearanceBody1"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tabGravity="start"
+                app:tabIconTint="@color/text_color_chip_state_list_dark"
+                app:tabIndicatorAnimationDuration="1"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorColor="@color/background_color_chip_state_list_dar"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorGravity="bottom"
+                app:tabIndicatorHeight="0dp"
+                app:tabMode="scrollable"
+                app:tabPaddingBottom="4dp"
+                app:tabSelectedTextColor="@color/text_color_chip_state_list_dark"
+                app:tabTextAppearance="?textAppearanceBody2" />
 
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv.league.name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_weight="1"
-                    android:textAlignment="center"
-                    android:textAppearance="?textAppearanceHeadline4"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="Fixture analysis"
-                    android:textAppearance="?textAppearanceHeadline6"
-                    android:visibility="gone"
-                    app:fontFamily="@font/semi_bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv.title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:tabGravity="start"
-                    app:tabIconTint="@color/text_color_chip_state_list_dark"
-                    app:tabIndicatorAnimationDuration="1"
-                    app:tabIndicatorAnimationMode="elastic"
-                    app:tabIndicatorColor="@color/background_color_chip_state_list_dar"
-                    app:tabIndicatorFullWidth="false"
-                    app:tabIndicatorGravity="bottom"
-                    app:tabIndicatorHeight="0dp"
-                    app:tabMode="scrollable"
-                    app:tabPaddingBottom="4dp"
-                    app:tabSelectedTextColor="@color/text_color_chip_state_list_dark"
-                    app:tabTextAppearance="?textAppearanceBody2" />
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPager"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.motion.widget.MotionLayout>

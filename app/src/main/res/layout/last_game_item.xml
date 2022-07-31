@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="?attr/background"
+    app:cardCornerRadius="32dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true"
+    android:id="@+id/card.main"
+    app:rippleColor="@android:color/darker_gray"
+    android:clickable="true"
+    android:focusable="true"
+    app:strokeColor="@color/shimmer_color"
+    app:strokeWidth="0.1dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:id="@+id/image.home.logo"
+            app:tint="@null"
+            android:src="@color/shimmer_color"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:text="2"
+            android:textAppearance="?textAppearanceCaption"
+            android:id="@+id/tv.home.score"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="-"
+            android:textAppearance="?textAppearanceCaption"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:text="1"
+            android:textAppearance="?textAppearanceCaption"
+            android:id="@+id/tv.away.score"/>
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            app:tint="@null"
+            android:id="@+id/image.away.logo"
+            android:src="@color/shimmer_color"/>
+
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

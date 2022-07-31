@@ -26,8 +26,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image.profile"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@android:color/darker_gray"
                 app:civ_border_color="@color/primaryColor"
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jane Doe"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/shimmer_color"
                     android:textAppearance="?textAppearanceCaption" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -55,14 +55,15 @@
                     android:textColor="@android:color/black"
                     android:layout_height="wrap_content"
                     android:text="Red card"
-                    android:textAppearance="?textAppearanceBody2" />
+                    android:textAppearance="?textAppearanceCaption" />
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/image.event.details"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 app:tint="@null"
+                android:layout_marginEnd="8dp"
                 android:layout_gravity="center"
                 android:visibility="gone" />
         </LinearLayout>
