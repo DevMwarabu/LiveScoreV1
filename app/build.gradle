@@ -10,8 +10,8 @@ android {
         applicationId "com.gluak.f24.livescorev1.livescore.eu.livesport.soccer.FlashScore_com.kokteyl.goal.football"
         minSdk 21
         targetSdk 32
-        versionCode 5
-        versionName "1.3.1"
+        versionCode 7
+        versionName "1.3.2"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

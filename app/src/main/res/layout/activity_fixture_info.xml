@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/background"
-    app:layoutDescription="@xml/activity_fixture_info_scene"
+    app:layoutDescription="@xml/activity_fixture_info_scene3"
     tools:context=".Activites.FixtureInfo">
 
     <com.google.android.material.card.MaterialCardView
@@ -103,7 +103,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="4"
                     android:textAppearance="?textAppearanceCaption" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -120,7 +119,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="3"
                     android:textAppearance="?textAppearanceCaption" />
             </LinearLayout>
 

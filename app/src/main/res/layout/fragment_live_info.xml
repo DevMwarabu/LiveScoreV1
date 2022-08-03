@@ -408,7 +408,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Tap to view predictions"
+                        android:text="Watch to get free predictions"
                         android:textAppearance="?textAppearanceCaption"/>
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
@@ -438,7 +438,7 @@
                                 android:textAppearance="?textAppearanceCaption"
                                 android:id="@+id/tv.click.to.view"
                                 android:textColor="@android:color/white"
-                                android:text="view predictions"/>
+                                android:text="free predictions"/>
 
                             <LinearLayout
                                 android:id="@+id/linear.predictions"

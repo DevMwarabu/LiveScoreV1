@@ -1,5 +1,6 @@
 package com.laxco.livescorev1.Activites;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,9 +9,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,7 +23,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.laxco.livescorev1.Adapters.FixtureAdapter;
@@ -90,7 +96,6 @@ public class FixtureInfo extends AppCompatActivity {
         setContentView(R.layout.activity_fixture_info);
 
         id = getIntent().getExtras().getInt("id");
-
         fragments = new ArrayList<>();
         timer = new Timer();
 
@@ -422,7 +427,6 @@ public class FixtureInfo extends AppCompatActivity {
         timer.cancel();
         super.onDestroy();
     }
-
     public String getSeason() {
         return season;
     }

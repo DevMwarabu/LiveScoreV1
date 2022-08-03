@@ -14,10 +14,10 @@
         <entry key="app/src/main/res/drawable/ic_baseline_terrain_24.xml" value="0.1735" />
         <entry key="app/src/main/res/drawable/ic_pie_chart_fill0_wght400_grad0_opsz48.xml" value="0.198" />
         <entry key="app/src/main/res/drawable/shape_game_status.xml" value="0.198" />
-        <entry key="app/src/main/res/layout/activity_all_leagues.xml" value="0.3307291666666667" />
+        <entry key="app/src/main/res/layout/activity_all_leagues.xml" value="0.20956719817767655" />
         <entry key="app/src/main/res/layout/activity_countries.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_fixture_info.xml" value="0.17981072555205047" />
+        <entry key="app/src/main/res/layout/activity_fixture_info.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_league_info.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_more_lives.xml" value="0.3307291666666667" />
@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/activity_team_info.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/ad_unified.xml" value="0.32222222222222224" />
+        <entry key="app/src/main/res/layout/banner_ad_row.xml" value="0.248046875" />
         <entry key="app/src/main/res/layout/country_item.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/dialog_opening_team_fixture.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/dialog_themes.xml" value="0.3307291666666667" />

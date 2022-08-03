@@ -36,3 +36,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "LiveScoreV1"
 include ':app'
+include ':nativetemplates'
