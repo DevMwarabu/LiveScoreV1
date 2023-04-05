@@ -25,4 +25,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fixtures">FIXTURES</string>
 
+    <string name="SDK_key">lFBrHlBzNxvarlonftvwF4NeQJBzCQT1FpOc8BPDX_O8TpDzGfRaOiiaxbHM93nSc4dCbmK0hIZA4LACQ310CT</string>
+    <string name="Report_key">HZIIGhl70yzg_apnTNQd7EQ2MHsg9ZeLpEpL2-E_zylSDOt2LLh9-WMyy_zZk11S_dqKaE73aPJIbAlClf2Ov9</string>
+
 </resources>

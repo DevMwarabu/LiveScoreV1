@@ -2,6 +2,7 @@ package com.laxco.livescorev1.Utils;
 
 import android.app.Application;
 
+import com.applovin.sdk.AppLovinSdk;
 import com.facebook.stetho.Stetho;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -25,6 +26,9 @@ public class MyApplication extends Application {
         OneSignal.initWithContext(this);
         OneSignal.setAppId(this.getResources().getString(R.string.one_signal_app_id));
         Stetho.initializeWithDefaults(this);
+
+        //applovin
+        AppLovinSdk.initializeSdk(this);
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override

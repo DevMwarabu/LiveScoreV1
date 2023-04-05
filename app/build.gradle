@@ -1,8 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+    id 'applovin-quality-service'
 }
-
+applovin {
+    apiKey "3qTfLsWtt0Pnrl-7wUB2iyIlrJZZftrFHGXVF-ITHXNmlziVRMRZT-cuz1-Nk0eZDScJQF2Eh3ONbQWgSRuyew"
+}
 android {
     compileSdk 32
 
@@ -110,6 +113,8 @@ dependencies {
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
     //s+
     implementation 'androidx.work:work-runtime-ktx:2.7.0'
+
+    implementation 'com.applovin:applovin-sdk:+'
 
 
 

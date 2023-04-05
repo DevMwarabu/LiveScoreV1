@@ -79,9 +79,9 @@ public class NextDate extends Fragment {
     private LinearLayout mLinearLayoutMain,mLinearLayoutSecond;
     private OkHttpClient client;
     private okhttp3.Request request;
+    private String url = "";
     private CardView mSearch;
     private com.google.android.gms.ads.interstitial.InterstitialAd mInterstitialAd;
-    private String url = "";
     private String TAG = "Demo";
     private Gson gson;
 
